@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Bob0817912/img-hosting/main/image/compilers.jpg">
 <meta property="article:published_time" content="2024-07-20T05:41:23.000Z">
-<meta property="article:modified_time" content="2024-07-23T07:39:08.897Z">
+<meta property="article:modified_time" content="2024-07-25T09:27:24.355Z">
 <meta property="article:author" content="Conanben77">
 <meta property="article:tag" content="computer">
 <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-07-23 15:39:08'
+  postUpdate: '2024-07-25 17:27:24'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -203,18 +203,28 @@
 <li>对于用户自己编写的头文件，宜用双引号形式。对于系统提供的头文件，既可以用尖括号形式，也可以用双引号形式，它们都能找到被包含的文件，但显然用尖括号形式更直截了当，效率更高。<br><strong>但是有一些C语言书籍的笔者写的时候常常用“”，这就是不好好学编译原理的原因，请大家不要养成不好的习惯</strong></li>
 </ul>
 <h3 id="宏替换"><a href="#宏替换" class="headerlink" title="宏替换"></a>宏替换</h3><ul>
-<li>首先什么是宏？<br>  宏的格式如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define &lt;宏名/标识符&gt; &lt;字符串&gt;</span><br></pre></td></tr></table></figure>
-举例来说：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14</span></span><br></pre></td></tr></table></figure>
+<li><p>首先什么是宏？<br>  宏的格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define &lt;宏名/标识符&gt; &lt;字符串&gt;</span><br></pre></td></tr></table></figure>
+<p>举例来说：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14</span></span><br></pre></td></tr></table></figure>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a><strong>说明</strong></h2></li>
+<li><p>宏名一般用大写</p>
+</li>
+<li><p>宏定义末尾不加分好;</p>
+</li>
+<li><p>可以用#undef命令终止宏定义的作用域</p>
+</li>
+<li><p>宏定义可以嵌套</p>
+</li>
+<li><p>字符串“”中永远不包含宏</p>
+</li>
+<li><p>宏替换在编译前进行，不分配内存，变量定义分配内存，函数调用在编译后程序运行时进行，并且分配内存</p>
+</li>
+<li><p>预处理是在编译之前的处理，而编译工作的任务之一就是语法检查，预处理不做语法检查</p>
+</li>
+<li><p>使用宏可提高程序的通用性和易读性，减少不一致性，减少输入错误和便于修改。例如：数组大小常用宏定义</p>
+</li>
 </ul>
-<p>①宏名一般用大写</p>
-<p>②宏定义末尾不加分好;</p>
-<p>③可以用#undef命令终止宏定义的作用域</p>
-<p>④宏定义可以嵌套</p>
-<p>⑤字符串“”中永远不包含宏</p>
-<p>⑥宏替换在编译前进行，不分配内存，变量定义分配内存，函数调用在编译后程序运行时进行，并且分配内存</p>
-<p>⑦预处理是在编译之前的处理，而编译工作的任务之一就是语法检查，预处理不做语法检查</p>
-<p>⑧使用宏可提高程序的通用性和易读性，减少不一致性，减少输入错误和便于修改。例如：数组大小常用宏定义</p>
 <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
 <li>这里引用<a target="_blank" rel="noopener" href="https://users.cs.utah.edu/~germain/PPS/Topics/C_Language/compiling_C_programs.html#:~:text=Compiling%20a%20C%20Program,A%20compiler%20is%20a%20program.">Compile</a>文档里的一句话：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Compiling is the transformation from Source Code (human readable) into machine code (computer executable). A compiler is a program. A compiler takes the recipe (code) for a new program (written in a high level language) and transforms this Code into a new language (Machine Language) that can be understood by the computer itself. This &quot;machine language&quot; is difficult to impossible for humans to read and understand (much less debug and maintain), thus the need for &quot;high level languages&quot; such as C.</span><br></pre></td></tr></table></figure>
 编译使用的命令是:</li>
